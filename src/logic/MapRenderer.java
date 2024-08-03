@@ -3,9 +3,7 @@ package logic;
 import entities.Entity;
 
 public class MapRenderer {
-    public static final String ANSI_RESET = "\033[0m";
-    public static final String ANSI_LIGHT_GREEN = "\033[48;5;28m";
-    public static final String ANSI_DARK_GREEN = "\033[48;5;70m";
+    public static final String GROUND = "🟫 ";
 
     StringBuilder stringBuilder = new StringBuilder();
     public void render(Map map) {
@@ -14,27 +12,28 @@ public class MapRenderer {
             for (int x = 0; x < 10; x++) {
                 Coordinates coordinates = new Coordinates(x, y);
                 if (map.isCellEmpty(coordinates)) {
-                    stringBuilder.append(getSpriteForEmptyCell(coordinates));
+                    stringBuilder.append(GROUND);
+                } else {
+                    stringBuilder.append(selectEmojiSpriteForEntity(map.getEntity(coordinates)));
                 }
             }
-            stringBuilder.append(ANSI_RESET);
             System.out.println(stringBuilder);
         }
     }
 
-    private String colorizeSprite(String sprite, boolean isCellDark) {
-        String result = sprite;
-
-        if (isCellDark) {
-            result = ANSI_DARK_GREEN + result;
-        } else {
-            result = ANSI_LIGHT_GREEN + result;
+    private String selectEmojiSpriteForEntity(Entity entity) {
+        switch (entity.getClass().getSimpleName()) {
+            case "Herbivore":
+                return "🐄 ";
+            case "Predator":
+                return "🐺 ";
+            case "Grass":
+                return "🌱 ";
+            case "Rock":
+                return "🪨";
+            case "Tree":
+                return "🌳";
         }
-
-        return result;
-    }
-
-    private String getSpriteForEmptyCell(Coordinates coordinates) {
-        return colorizeSprite("   ", Map.isCellDark(coordinates));
+        return "";
     }
 }

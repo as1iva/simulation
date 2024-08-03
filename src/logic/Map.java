@@ -1,6 +1,9 @@
 package logic;
 
 import entities.Entity;
+import entities.creatures.Herbivore;
+import entities.creatures.Predator;
+import entities.objects.Grass;
 
 import java.util.HashMap;
 
@@ -21,9 +24,5 @@ public class Map {
 
     public void setUpRandomEntityPositions() {
         // make randomizer of positions
-    }
-
-    public static boolean isCellDark(Coordinates coordinates) {
-        return ((coordinates.X + coordinates.Y) % 2) == 0;
     }
 }
