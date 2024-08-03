@@ -1,3 +1,5 @@
+package entities;
+
 public abstract class Entity {
     protected static String entityView;
 

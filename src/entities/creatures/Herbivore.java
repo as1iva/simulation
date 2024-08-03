@@ -1,3 +1,5 @@
+package entities.creatures;
+
 public class Herbivore extends Creature {
     public Herbivore() {
         entityView = "🐄";
