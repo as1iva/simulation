@@ -1,9 +1,15 @@
 package logic;
 
 import entities.Entity;
+import entities.creatures.Herbivore;
 
 public class MapRenderer {
     public static final String GROUND = "🟫 ";
+    public static final String HERBIVORE = "🐄 ";
+    public static final String PREDATOR = "🐺 ";
+    public static final String GRASS = "🌱 ";
+    public static final String ROCK = "🪨 ";
+    public static final String TREE = "🌳 ";
 
     StringBuilder stringBuilder = new StringBuilder();
     public void render(Map map) {
@@ -24,15 +30,15 @@ public class MapRenderer {
     private String selectEmojiSpriteForEntity(Entity entity) {
         switch (entity.getClass().getSimpleName()) {
             case "Herbivore":
-                return "🐄 ";
+                return HERBIVORE;
             case "Predator":
-                return "🐺 ";
+                return PREDATOR;
             case "Grass":
-                return "🌱 ";
+                return GRASS;
             case "Rock":
-                return "🪨 ";
+                return ROCK;
             case "Tree":
-                return "🌳 ";
+                return TREE;
         }
         return "";
     }
