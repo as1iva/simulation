@@ -7,7 +7,7 @@ public class MapRenderer {
 
     StringBuilder stringBuilder = new StringBuilder();
     public void render(Map map) {
-        for (int y = 10; y > 0; y--) {
+        for (int y = 9; y > -1; y--) {
             stringBuilder.setLength(0);
             for (int x = 0; x < 10; x++) {
                 Coordinates coordinates = new Coordinates(x, y);
@@ -30,9 +30,9 @@ public class MapRenderer {
             case "Grass":
                 return "🌱 ";
             case "Rock":
-                return "🪨";
+                return "🪨 ";
             case "Tree":
-                return "🌳";
+                return "🌳 ";
         }
         return "";
     }
