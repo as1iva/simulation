@@ -2,6 +2,10 @@ package logic;
 
 import entities.Entity;
 import entities.creatures.Herbivore;
+import entities.creatures.Predator;
+import entities.objects.Grass;
+import entities.objects.Rock;
+import entities.objects.Tree;
 
 public class MapRenderer {
     public static final String GROUND = "🟫 ";
@@ -28,18 +32,18 @@ public class MapRenderer {
     }
 
     private String selectEmojiSpriteForEntity(Entity entity) {
-        switch (entity.getClass().getSimpleName()) {
-            case "Herbivore":
-                return HERBIVORE;
-            case "Predator":
-                return PREDATOR;
-            case "Grass":
-                return GRASS;
-            case "Rock":
-                return ROCK;
-            case "Tree":
-                return TREE;
+        if (entity instanceof Herbivore) {
+            return HERBIVORE;
+        } else if (entity instanceof Predator) {
+            return PREDATOR;
+        } else if (entity instanceof Grass) {
+            return GRASS;
+        } else if (entity instanceof Rock) {
+            return ROCK;
+        } else if (entity instanceof Tree) {
+            return TREE;
+        } else {
+            return "";
         }
-        return "";
     }
 }
