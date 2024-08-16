@@ -14,6 +14,7 @@ public class MapRenderer {
     public static final String GRASS = "🌱 ";
     public static final String ROCK = "🪨 ";
     public static final String TREE = "🌳 ";
+    private static final String EMPTY = "";
 
     StringBuilder stringBuilder = new StringBuilder();
     public void render(Map map) {
@@ -42,8 +43,7 @@ public class MapRenderer {
             return ROCK;
         } else if (entity instanceof Tree) {
             return TREE;
-        } else {
-            return "";
         }
+        return EMPTY;
     }
 }
