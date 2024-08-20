@@ -11,6 +11,14 @@ public class Coordinates {
         this.Y = Y;
     }
 
+    public int getX() {
+        return X;
+    }
+
+    public int getY() {
+        return Y;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
