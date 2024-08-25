@@ -18,6 +18,10 @@ public class Map {
         entities.put(coordinates, entity);
     }
 
+    public void removeEntity(Coordinates coordinates, Entity entity) {
+        entities.remove(coordinates, entity);
+    }
+
     public Entity getEntity(Coordinates coordinates) {
         return entities.get(coordinates);
     }
