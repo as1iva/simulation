@@ -27,10 +27,11 @@ public class Herbivore extends Creature {
         }
 
         map.removeEntity(initialPosition, this);
-        map.setEntity(nextPosition, this);
 
         if (map.getEntity(nextPosition) instanceof Grass) {
             eatFood();
         }
+
+        map.setEntity(nextPosition, this);
     }
 }
