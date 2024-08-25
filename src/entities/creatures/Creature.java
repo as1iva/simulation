@@ -7,8 +7,8 @@ import logic.Map;
 import java.util.List;
 
 public abstract class Creature extends Entity {
-    protected static int health;
-    protected static int speed;
+    protected int health;
+    protected int speed;
 
     public abstract void makeMove(Map map, List<Coordinates> path, Coordinates initialPosition);
 }
