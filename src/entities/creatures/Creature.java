@@ -1,10 +1,14 @@
 package entities.creatures;
 
 import entities.Entity;
+import logic.Coordinates;
+import logic.Map;
+
+import java.util.List;
 
 public abstract class Creature extends Entity {
     protected static int health;
     protected static int speed;
 
-    public abstract void makeMove();
+    public abstract void makeMove(Map map, List<Coordinates> path, Coordinates initialPosition);
 }
