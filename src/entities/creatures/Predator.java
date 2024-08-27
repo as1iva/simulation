@@ -10,7 +10,7 @@ public class Predator extends Creature {
 
     public Predator() {
         health = 100;
-        speed = 3;
+        speed = 2;
     }
 
     @Override
