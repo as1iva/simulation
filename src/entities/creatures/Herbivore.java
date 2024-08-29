@@ -5,6 +5,7 @@ import logic.Coordinates;
 import logic.Map;
 
 import java.util.List;
+import java.util.Random;
 
 public class Herbivore extends Creature {
     public Herbivore() {
@@ -27,6 +28,7 @@ public class Herbivore extends Creature {
 
         if (map.getEntity(nextPosition) instanceof Grass) {
             eatFood();
+            replantGrass(map);
         }
 
         map.setEntity(nextPosition, this);
@@ -37,6 +39,19 @@ public class Herbivore extends Creature {
             this.health += 20;
         } else {
             this.health = 100;
+        }
+    }
+
+    private void replantGrass(Map map) {
+        final Random random = new Random();
+
+        int x = random.nextInt(10);
+        int y = random.nextInt(10);
+
+        boolean choice = random.nextBoolean();
+
+        if (choice && !map.entities.containsKey(new Coordinates(x, y))) {
+            map.setEntity(new Coordinates(x, y), new Grass());
         }
     }
 }
