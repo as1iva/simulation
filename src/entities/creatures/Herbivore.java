@@ -12,9 +12,6 @@ public class Herbivore extends Creature {
         speed = 1;
     }
 
-    public void eatFood() {
-        // eat grass
-    }
 
     @Override
     public void makeMove(Map map, List<Coordinates> path, Coordinates initialPosition) {
@@ -33,5 +30,13 @@ public class Herbivore extends Creature {
         }
 
         map.setEntity(nextPosition, this);
+    }
+
+    public void eatFood() {
+        if (this.health <= 80) {
+            this.health += 20;
+        } else {
+            this.health = 100;
+        }
     }
 }
