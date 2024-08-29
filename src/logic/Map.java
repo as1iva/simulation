@@ -31,7 +31,14 @@ public class Map {
     }
 
     public void setUpRandomEntityPosition() {
-        Entity[] arrayOfEntities = {new Herbivore(), new Predator(), new Grass(), new Rock(), new Tree()};
+        Class<?>[] arrayOfEntities = {
+                Herbivore.class,
+                Predator.class,
+                Grass.class,
+                Rock.class,
+                Tree.class
+        };
+
         int i = 0;
 
         while (true) {
@@ -46,7 +53,13 @@ public class Map {
                 i++;
             }
 
-            setEntity(new Coordinates(xCoordinate, yCoordinate), arrayOfEntities[i]);
+            switch (i) {
+                case 0 -> setEntity(new Coordinates(xCoordinate, yCoordinate), new Herbivore());
+                case 1 -> setEntity(new Coordinates(xCoordinate, yCoordinate), new Predator());
+                case 2 -> setEntity(new Coordinates(xCoordinate, yCoordinate), new Grass());
+                case 3 -> setEntity(new Coordinates(xCoordinate, yCoordinate), new Rock());
+                case 4 -> setEntity(new Coordinates(xCoordinate, yCoordinate), new Tree());
+            }
 
             if (entities.size() == 16) {
                 break;
@@ -54,12 +67,12 @@ public class Map {
         }
     }
 
-    private boolean isEnoughObjectsPlaced(HashMap<Coordinates, Entity> entities, Entity[] arrayOfEntities, int i) {
+    private boolean isEnoughObjectsPlaced(HashMap<Coordinates, Entity> entities, Class<?>[] arrayOfEntities, int i) {
         int[] countOfEntities = {4, 2, 5, 2, 3};
         int count = 0;
 
         for (Entity entity : entities.values()) {
-            if (entity.equals(arrayOfEntities[i])) {
+            if (arrayOfEntities[i].isInstance(entity)) {
                 count++;
             }
         }
