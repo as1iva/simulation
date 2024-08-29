@@ -34,6 +34,6 @@ public class Coordinates {
 
     @Override
     public String toString() {
-        return "X=" + X + ", Y=" + Y + '}';
+        return "{X=" + X + ", Y=" + Y + '}';
     }
 }
