@@ -31,4 +31,15 @@ public class Predator extends Creature {
 
         map.setEntity(nextPosition, this);
     }
+
+
+    public void attackTarget(Map map, Coordinates nextPosition, Herbivore herbivore, List<Coordinates> path, int target) {
+        if (herbivore.getHealth() > STRENGTH) {
+            map.setEntity(nextPosition, this);
+            herbivore.setHealth(herbivore.getHealth() - STRENGTH);
+        } else {
+            herbivore.setHealth(herbivore.getHealth() - STRENGTH);
+            map.setEntity(path.get(target), this);
+        }
+    }
 }
