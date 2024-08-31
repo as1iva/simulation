@@ -18,9 +18,9 @@ public class MapRenderer {
 
     StringBuilder stringBuilder = new StringBuilder();
     public void render(Map map) {
-        for (int y = 9; y > -1; y--) {
+        for (int y = Map.MAP_HEIGHT - 1; y > -1; y--) {
             stringBuilder.setLength(0);
-            for (int x = 0; x < 10; x++) {
+            for (int x = 0; x < Map.MAP_WIDTH; x++) {
                 Coordinates coordinates = new Coordinates(x, y);
                 if (map.isCellEmpty(coordinates)) {
                     stringBuilder.append(GROUND);

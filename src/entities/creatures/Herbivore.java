@@ -45,8 +45,8 @@ public class Herbivore extends Creature {
     private void replantGrass(Map map) {
         final Random random = new Random();
 
-        int x = random.nextInt(10);
-        int y = random.nextInt(10);
+        int x = random.nextInt(Map.MAP_WIDTH);
+        int y = random.nextInt(Map.MAP_HEIGHT);
 
         boolean choice = random.nextBoolean();
 

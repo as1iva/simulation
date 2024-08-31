@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Map {
+    public static final int MAP_WIDTH = 10;
+    public static final int MAP_HEIGHT = 10;
     Random random = new Random();
     HashMap<Coordinates, Entity> entities = new HashMap<>();
 
@@ -42,8 +44,8 @@ public class Map {
         int i = 0;
 
         while (true) {
-            int xCoordinate = random.nextInt(10);
-            int yCoordinate = random.nextInt(10);
+            int xCoordinate = random.nextInt(MAP_WIDTH);
+            int yCoordinate = random.nextInt(MAP_HEIGHT);
 
             if (entities.containsKey(new Coordinates(xCoordinate, yCoordinate))) {
                 continue;

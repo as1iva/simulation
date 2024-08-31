@@ -46,7 +46,7 @@ public class BreadthFirstSearch {
                 int newX = newCoordinates.getX();
                 int newY = newCoordinates.getY();
 
-                boolean isValidMove = (newX < 10 && newX >= 0 && newY < 10 && newY >= 0 &&
+                boolean isValidMove = (newX < Map.MAP_WIDTH && newX >= 0 && newY < Map.MAP_HEIGHT && newY >= 0 &&
                         !checkedEntities.contains(newCoordinates) &&
                         !queue.contains(newCoordinates) &&
                         !(map.getEntity(newCoordinates) instanceof Rock) &&
