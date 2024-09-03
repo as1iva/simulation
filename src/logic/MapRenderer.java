@@ -13,7 +13,7 @@ public class MapRenderer {
     public static final String PREDATOR = "🐯 ";
     public static final String GRASS = "🌱 ";
     public static final String ROCK = "🪨 ";
-    public static final String TREE = "🌳 ";
+    public static final String TREE = "🌲 ";
     private static final String EMPTY = "";
 
     StringBuilder stringBuilder = new StringBuilder();
