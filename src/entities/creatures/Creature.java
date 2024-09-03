@@ -10,5 +10,13 @@ public abstract class Creature extends Entity {
     protected int health;
     protected int speed;
 
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public abstract void makeMove(Map map, List<Coordinates> path, Coordinates initialPosition);
 }
