@@ -1,4 +1,4 @@
-package logic;
+package search;
 
 import entities.Entity;
 import entities.creatures.Herbivore;
