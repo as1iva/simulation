@@ -18,8 +18,8 @@ public class Map {
     private static final int GRASS_COUNT = 80;
     private static final int ROCK_COUNT = 40;
     private static final int TREE_COUNT = 30;
-    Random random = new Random();
-    HashMap<Coordinates, Entity> entities = new HashMap<>();
+    private final Random random = new Random();
+    public HashMap<Coordinates, Entity> entities = new HashMap<>();
 
     public void setEntity(Coordinates coordinates, Entity entity) {
         entities.put(coordinates, entity);
