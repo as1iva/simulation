@@ -13,6 +13,11 @@ import java.util.Random;
 public class Map {
     public static final int MAP_WIDTH = 10;
     public static final int MAP_HEIGHT = 10;
+    private static final int HERBIVORE_COUNT = 14;
+    private static final int PREDATOR_COUNT = 3;
+    private static final int GRASS_COUNT = 80;
+    private static final int ROCK_COUNT = 40;
+    private static final int TREE_COUNT = 30;
     Random random = new Random();
     HashMap<Coordinates, Entity> entities = new HashMap<>();
 
@@ -63,14 +68,14 @@ public class Map {
                 case 4 -> setEntity(new Coordinates(xCoordinate, yCoordinate), new Tree());
             }
 
-            if (entities.size() == 16) {
+            if (entities.size() == HERBIVORE_COUNT + PREDATOR_COUNT + GRASS_COUNT + ROCK_COUNT + TREE_COUNT) {
                 break;
             }
         }
     }
 
     private boolean isEnoughObjectsPlaced(HashMap<Coordinates, Entity> entities, Class<?>[] arrayOfEntities, int i) {
-        int[] countOfEntities = {4, 2, 5, 2, 3};
+        int[] countOfEntities = {HERBIVORE_COUNT, PREDATOR_COUNT, GRASS_COUNT, ROCK_COUNT, TREE_COUNT};
         int count = 0;
 
         for (Entity entity : entities.values()) {
