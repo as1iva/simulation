@@ -10,7 +10,7 @@ import entities.objects.Tree;
 public class MapRenderer {
     public static final String GROUND = "🟫 ";
     public static final String HERBIVORE = "🐮 ";
-    public static final String PREDATOR = "🐺 ";
+    public static final String PREDATOR = "🐯 ";
     public static final String GRASS = "🌱 ";
     public static final String ROCK = "🪨 ";
     public static final String TREE = "🌳 ";
