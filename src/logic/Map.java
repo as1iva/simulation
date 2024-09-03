@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Map {
-    public static final int MAP_WIDTH = 10;
-    public static final int MAP_HEIGHT = 10;
+    public static final int MAP_WIDTH = 20;
+    public static final int MAP_HEIGHT = 20;
     private static final int HERBIVORE_COUNT = 14;
     private static final int PREDATOR_COUNT = 3;
     private static final int GRASS_COUNT = 80;
