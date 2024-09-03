@@ -2,7 +2,7 @@ package actions;
 
 import entities.Entity;
 import entities.creatures.Creature;
-import logic.BreadthFirstSearch;
+import search.BreadthFirstSearch;
 import map.Coordinates;
 import map.Map;
 

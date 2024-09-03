@@ -4,6 +4,7 @@ import actions.InitActions;
 import actions.TurnActions;
 import map.Map;
 import map.MapRenderer;
+import search.BreadthFirstSearch;
 
 import java.util.*;
 
