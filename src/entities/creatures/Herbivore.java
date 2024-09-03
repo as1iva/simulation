@@ -1,6 +1,6 @@
 package entities.creatures;
 
-import entities.objects.Grass;
+import entities.environment.Grass;
 import logic.Coordinates;
 import logic.Map;
 

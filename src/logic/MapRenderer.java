@@ -3,9 +3,9 @@ package logic;
 import entities.Entity;
 import entities.creatures.Herbivore;
 import entities.creatures.Predator;
-import entities.objects.Grass;
-import entities.objects.Rock;
-import entities.objects.Tree;
+import entities.environment.Grass;
+import entities.environment.Rock;
+import entities.environment.Tree;
 
 public class MapRenderer {
     public static final String GROUND = "🟫 ";
