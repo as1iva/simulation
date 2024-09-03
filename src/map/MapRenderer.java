@@ -1,4 +1,4 @@
-package logic;
+package map;
 
 import entities.Entity;
 import entities.creatures.Herbivore;
