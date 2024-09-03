@@ -1,8 +1,8 @@
 package entities.creatures;
 
 import entities.Entity;
-import logic.Coordinates;
-import logic.Map;
+import map.Coordinates;
+import map.Map;
 
 import java.util.List;
 

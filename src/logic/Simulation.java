@@ -2,9 +2,9 @@ package logic;
 
 import actions.InitActions;
 import actions.TurnActions;
-import entities.Entity;
+import map.Map;
+import map.MapRenderer;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class Simulation extends Thread {

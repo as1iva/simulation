@@ -6,6 +6,8 @@ import entities.creatures.Predator;
 import entities.environment.Grass;
 import entities.environment.Rock;
 import entities.environment.Tree;
+import map.Coordinates;
+import map.Map;
 
 import java.util.*;
 

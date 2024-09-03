@@ -1,6 +1,6 @@
 package actions;
 
-import logic.Map;
+import map.Map;
 
 import java.util.Scanner;
 

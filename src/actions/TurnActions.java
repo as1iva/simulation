@@ -3,8 +3,8 @@ package actions;
 import entities.Entity;
 import entities.creatures.Creature;
 import logic.BreadthFirstSearch;
-import logic.Coordinates;
-import logic.Map;
+import map.Coordinates;
+import map.Map;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
