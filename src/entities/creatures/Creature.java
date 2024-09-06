@@ -18,5 +18,7 @@ public abstract class Creature extends Entity {
         this.health = health;
     }
 
+    public abstract boolean canEat(Entity food);
+
     public abstract void makeMove(Map map, List<Coordinates> path, Coordinates initialPosition);
 }

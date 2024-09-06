@@ -1,5 +1,6 @@
 package entities.creatures;
 
+import entities.Entity;
 import map.Coordinates;
 import map.Map;
 
@@ -11,6 +12,11 @@ public class Predator extends Creature {
     public Predator() {
         health = 100;
         speed = 2;
+    }
+
+    @Override
+    public boolean canEat(Entity food) {
+        return food instanceof Herbivore;
     }
 
     @Override

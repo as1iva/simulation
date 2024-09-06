@@ -1,5 +1,6 @@
 package entities.creatures;
 
+import entities.Entity;
 import entities.environment.Grass;
 import map.Coordinates;
 import map.Map;
@@ -13,6 +14,11 @@ public class Herbivore extends Creature {
         speed = 1;
     }
 
+
+    @Override
+    public boolean canEat(Entity food) {
+        return food instanceof Grass;
+    }
 
     @Override
     public void makeMove(Map map, List<Coordinates> path, Coordinates initialPosition) {
