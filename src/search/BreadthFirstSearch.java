@@ -1,18 +1,13 @@
 package search;
 
-import entities.Entity;
-import entities.creatures.Herbivore;
-import entities.creatures.Predator;
-import entities.environment.Grass;
-import entities.environment.Rock;
-import entities.environment.Tree;
+import entities.creatures.Creature;
 import map.Coordinates;
 import map.Map;
 
 import java.util.*;
 
 public class BreadthFirstSearch {
-    public List<Coordinates> BFS(Map map, Coordinates coordinates, Entity entity) {
+    public List<Coordinates> BFS(Map map, Coordinates coordinates, Creature entity) {
 
         Queue<Coordinates> queue = new LinkedList<>();
         List<Coordinates> checkedEntities = new ArrayList<>();
@@ -29,11 +24,7 @@ public class BreadthFirstSearch {
 
             checkedEntities.add(coordinates);
 
-            if (entity instanceof Herbivore && map.getEntity(coordinates) instanceof Grass) {
-                return recreatePath(coordinates, checkedEntities, path, newPath);
-            }
-
-            if (entity instanceof Predator && map.getEntity(coordinates) instanceof Herbivore) {
+            if (entity.canEat(map.getEntity(coordinates))) {
                 return recreatePath(coordinates, checkedEntities, path, newPath);
             }
 
