@@ -48,7 +48,7 @@ public class BreadthFirstSearch {
                 int newX = newCoordinates.getX();
                 int newY = newCoordinates.getY();
 
-                boolean isValidMove = (newX < Map.MAP_WIDTH && newX >= 0 && newY < Map.MAP_HEIGHT && newY >= 0 &&
+                boolean isValidMove = (areCoordinatesInMapBounds(newX, newY) &&
                         !checkedEntities.contains(newCoordinates) &&
                         !queue.contains(newCoordinates) &&
                         !(map.getEntity(newCoordinates) instanceof Rock) &&
@@ -73,6 +73,10 @@ public class BreadthFirstSearch {
             }
         }
         return newPath;
+    }
+
+    private boolean areCoordinatesInMapBounds(int x, int y) {
+        return x < Map.MAP_WIDTH && x >= 0 && y < Map.MAP_HEIGHT && y >= 0;
     }
 
     private List<Coordinates> recreatePath(Coordinates coordinates, List<Coordinates> checkedEntities, HashMap<Coordinates, Coordinates> path, List<Coordinates> newPath) {
