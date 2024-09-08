@@ -39,23 +39,11 @@ public class BreadthFirstSearch {
                 int newX = newCoordinates.getX();
                 int newY = newCoordinates.getY();
 
-                boolean isValidMove = (areCoordinatesInMapBounds(newX, newY) &&
-                        !checkedEntities.contains(newCoordinates) &&
-                        !queue.contains(newCoordinates) &&
-                        !(map.getEntity(newCoordinates) instanceof Rock) &&
-                        !(map.getEntity(newCoordinates) instanceof Tree));
-
-                if (entity instanceof Herbivore) {
-                    isValidMove = isValidMove &&
-                            !(map.getEntity(newCoordinates) instanceof Predator) &&
-                            !(map.getEntity(newCoordinates) instanceof Herbivore);
-                }
-
-                if (entity instanceof Predator) {
-                    isValidMove = isValidMove &&
-                            !(map.getEntity(newCoordinates) instanceof Predator) &&
-                            !(map.getEntity(newCoordinates) instanceof Grass);
-                }
+                boolean isValidMove = (
+                        areCoordinatesInMapBounds(newX, newY) &&
+                        isCellExplorable(checkedEntities, queue, newCoordinates) &&
+                        canMove(map, newCoordinates, entity)
+                );
 
                 if (isValidMove) {
                     queue.offer(newCoordinates);
@@ -68,6 +56,14 @@ public class BreadthFirstSearch {
 
     private boolean areCoordinatesInMapBounds(int x, int y) {
         return x < Map.MAP_WIDTH && x >= 0 && y < Map.MAP_HEIGHT && y >= 0;
+    }
+
+    private boolean isCellExplorable(List<Coordinates> checkedEntities, Queue<Coordinates> queue, Coordinates coordinates) {
+        return !checkedEntities.contains(coordinates) && !queue.contains(coordinates);
+    }
+
+    private boolean canMove(Map map, Coordinates coordinates, Creature entity) {
+        return entity.canEat(map.getEntity(coordinates)) || map.isCellEmpty(coordinates);
     }
 
     private List<Coordinates> recreatePath(Coordinates coordinates, List<Coordinates> checkedEntities, HashMap<Coordinates, Coordinates> path, List<Coordinates> newPath) {
