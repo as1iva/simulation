@@ -35,7 +35,7 @@ public class TurnActions {
 
         if (!entities.contains(entity)) {
             if (entity instanceof Creature creature) {
-                List<Coordinates> path = breadthFirstSearch.BFS(map, coordinates, entity);
+                List<Coordinates> path = breadthFirstSearch.BFS(map, coordinates, creature);
                 if (!path.isEmpty()) {
                     creature.makeMove(map, path, coordinates);
                     entities.add(creature);
@@ -59,8 +59,8 @@ public class TurnActions {
     public boolean hasPath(Map map) {
         for (Coordinates coordinates : map.entities.keySet()) {
             Entity entity = map.getEntity(coordinates);
-            if (entity instanceof Creature) {
-                List<Coordinates> path = breadthFirstSearch.BFS(map, coordinates, entity);
+            if (entity instanceof Creature creature) {
+                List<Coordinates> path = breadthFirstSearch.BFS(map, coordinates, creature);
                 if (!path.isEmpty()) {
                     return true;
                 }
