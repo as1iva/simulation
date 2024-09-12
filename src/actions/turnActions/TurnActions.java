@@ -1,4 +1,4 @@
-package actions;
+package actions.turnActions;
 
 import entities.Entity;
 import entities.creatures.Creature;
@@ -6,10 +6,7 @@ import search.BreadthFirstSearch;
 import map.Coordinates;
 import map.Map;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class TurnActions {
     private final Map map;
