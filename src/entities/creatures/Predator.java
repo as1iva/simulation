@@ -26,23 +26,20 @@ public class Predator extends Creature {
 
         if (path.size() == speed) {
             nextPosition = initialPosition;
-
-            if (map.getEntity(path.get(target)) instanceof Herbivore herbivore) {
-                map.removeEntity(initialPosition, this);
-                attackTarget(map, nextPosition, herbivore, path, target);
-            }
         } else if (path.size() == 3) {
             nextPosition = path.get(1);
-
-            if (map.getEntity(path.get(target)) instanceof Herbivore herbivore) {
-                map.removeEntity(initialPosition, this);
-                attackTarget(map, nextPosition, herbivore, path, target);
-            }
         } else {
             nextPosition = path.get(speed);
 
             map.removeEntity(initialPosition, this);
             map.setEntity(nextPosition, this);
+
+            return;
+        }
+
+        if (map.getEntity(path.get(target)) instanceof Herbivore herbivore) {
+            map.removeEntity(initialPosition, this);
+            attackTarget(map, nextPosition, herbivore, path, target);
         }
     }
 
