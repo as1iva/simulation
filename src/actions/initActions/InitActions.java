@@ -1,19 +1,9 @@
-package actions;
-
-import map.Map;
+package actions.initActions;
 
 import java.util.Scanner;
 
 public class InitActions {
     private final Scanner scanner = new Scanner(System.in);
-    private final Map map;
-    public InitActions(Map map) {
-        this.map = map;
-    }
-
-    public void setUpMap() {
-        map.setUpRandomEntityPosition();
-    }
 
     public void printWelcomeMessage() {
         System.out.println("🪨🌱🌲🪨🌱🪨🌲🐮🌲🌱🪨🌱🪨🌲🐯🌲");
