@@ -1,7 +1,7 @@
 package core;
 
-import actions.InitActions;
-import actions.TurnActions;
+import actions.initActions.InitActions;
+import actions.turnActions.MoveEntitiesAction;
 import actions.turnActions.ReplantGrassAction;
 import map.Map;
 import map.MapRenderer;
@@ -14,7 +14,8 @@ public class Simulation extends Thread {
     private final MapRenderer mapRenderer = new MapRenderer();
     private final BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch();
     private final InitActions initActions = new InitActions(map);
-    private final TurnActions turnActions = new TurnActions(map, breadthFirstSearch);
+    private final MoveEntitiesAction moveEntitiesAction = new MoveEntitiesAction(map, breadthFirstSearch);
+    private final ReplantGrassAction replantGrassAction = new ReplantGrassAction();
     private int turnsOfSimulation = 1;
     private boolean running = true;
     private boolean stopped = false;
@@ -23,8 +24,8 @@ public class Simulation extends Thread {
     public void nextTurn() {
         int REPLANT_FREQUENCY = 5;
         System.out.println("\nХод: " + turnsOfSimulation);
+        moveEntitiesAction.perform();
 
-        turnActions.perform();
         if (turnsOfSimulation % REPLANT_FREQUENCY == 0) {
             replantGrassAction.perform(map);
         }
@@ -53,7 +54,7 @@ public class Simulation extends Thread {
     }
 
     public void run() {
-        while (running && turnActions.hasPath(map)) {
+        while (running && moveEntitiesAction.hasPath(map)) {
             if (!stopped) {
                 nextTurn();
                 try {

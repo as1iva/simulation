@@ -1,5 +1,6 @@
 package actions.turnActions;
 
+import actions.Action;
 import entities.Entity;
 import entities.creatures.Creature;
 import search.BreadthFirstSearch;
@@ -8,11 +9,11 @@ import map.Map;
 
 import java.util.*;
 
-public class TurnActions {
+public class MoveEntitiesAction extends Action {
     private final Map map;
     private final BreadthFirstSearch breadthFirstSearch;
 
-    public TurnActions(Map map, BreadthFirstSearch breadthFirstSearch) {
+    public MoveEntitiesAction(Map map, BreadthFirstSearch breadthFirstSearch) {
         this.map = map;
         this.breadthFirstSearch = breadthFirstSearch;
     }
