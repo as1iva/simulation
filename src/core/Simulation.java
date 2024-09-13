@@ -1,6 +1,5 @@
 package core;
 
-import actions.initActions.InitActions;
 import actions.initActions.SpawnAction;
 import actions.turnActions.MoveEntitiesAction;
 import actions.turnActions.ReplantGrassAction;
@@ -14,7 +13,8 @@ public class Simulation extends Thread {
     private final Map map = new Map();
     private final MapRenderer mapRenderer = new MapRenderer();
     private final BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch();
-    private final InitActions initActions = new InitActions();
+    private final MessagePrinter messagePrinter = new MessagePrinter();
+    private final InputValidator inputValidator = new InputValidator();
     private final SpawnAction spawnAction = new SpawnAction(map);
     private final MoveEntitiesAction moveEntitiesAction = new MoveEntitiesAction(map, breadthFirstSearch);
     private final ReplantGrassAction replantGrassAction = new ReplantGrassAction();
@@ -37,8 +37,8 @@ public class Simulation extends Thread {
     }
 
     public void startSimulation() {
-        initActions.printWelcomeMessage();
-        initActions.getUserInput();
+        messagePrinter.print();
+        inputValidator.getUserInput();
         spawnAction.perform();
 
         this.start();
