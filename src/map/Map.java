@@ -1,14 +1,8 @@
 package map;
 
 import entities.Entity;
-import entities.creatures.Herbivore;
-import entities.creatures.Predator;
-import entities.environment.Grass;
-import entities.environment.Rock;
-import entities.environment.Tree;
 
 import java.util.HashMap;
-import java.util.Random;
 
 public class Map {
     public static final int MAP_WIDTH = 20;
