@@ -3,19 +3,19 @@ package actions.turnActions;
 import actions.Action;
 import entities.environment.Grass;
 import map.Coordinates;
-import map.Map;
+import map.WorldMap;
 
 public class ReplantGrassAction extends Action {
-    public void perform(Map map) {
+    public void perform(WorldMap worldMap) {
         final int GRASS_COUNT = 10;
 
         for (int i = 0; i < GRASS_COUNT; i++) {
-            Coordinates coordinates = getEmptyRandomCoordinates(map);
-            replantGrass(map, coordinates);
+            Coordinates coordinates = getEmptyRandomCoordinates(worldMap);
+            replantGrass(worldMap, coordinates);
         }
     }
 
-    private void replantGrass(Map map, Coordinates coordinates) {
-        map.setEntity(coordinates, new Grass());
+    private void replantGrass(WorldMap worldMap, Coordinates coordinates) {
+        worldMap.setEntity(coordinates, new Grass());
     }
 }

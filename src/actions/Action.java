@@ -1,19 +1,19 @@
 package actions;
 
 import map.Coordinates;
-import map.Map;
+import map.WorldMap;
 
 import java.util.Random;
 
 public class Action {
-    protected Coordinates getEmptyRandomCoordinates(Map map) {
+    protected Coordinates getEmptyRandomCoordinates(WorldMap worldMap) {
         final Random random = new Random();
 
         while (true) {
-            int x = random.nextInt(Map.MAP_WIDTH);
-            int y = random.nextInt(Map.MAP_HEIGHT);
+            int x = random.nextInt(WorldMap.MAP_WIDTH);
+            int y = random.nextInt(WorldMap.MAP_HEIGHT);
 
-            if (!map.entities.containsKey(new Coordinates(x, y))) {
+            if (!worldMap.entities.containsKey(new Coordinates(x, y))) {
                 return new Coordinates(x, y);
             }
         }

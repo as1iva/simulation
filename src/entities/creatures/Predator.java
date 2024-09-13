@@ -2,7 +2,7 @@ package entities.creatures;
 
 import entities.Entity;
 import map.Coordinates;
-import map.Map;
+import map.WorldMap;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class Predator extends Creature {
     }
 
     @Override
-    public void makeMove(Map map, List<Coordinates> path, Coordinates initialPosition) {
+    public void makeMove(WorldMap worldMap, List<Coordinates> path, Coordinates initialPosition) {
         final int LAST_STEP_BEFORE_TARGET = speed - 1;
         final int WITHIN_REACH_OF_TARGET = speed + 1;
         final int NEXT_TO_TARGET = 2;
@@ -35,26 +35,26 @@ public class Predator extends Creature {
         } else {
             nextPosition = path.get(speed);
 
-            map.removeEntity(initialPosition, this);
-            map.setEntity(nextPosition, this);
+            worldMap.removeEntity(initialPosition, this);
+            worldMap.setEntity(nextPosition, this);
 
             return;
         }
 
-        if (map.getEntity(path.get(target)) instanceof Herbivore herbivore) {
-            map.removeEntity(initialPosition, this);
-            attackTarget(map, nextPosition, herbivore, path, target);
+        if (worldMap.getEntity(path.get(target)) instanceof Herbivore herbivore) {
+            worldMap.removeEntity(initialPosition, this);
+            attackTarget(worldMap, nextPosition, herbivore, path, target);
         }
     }
 
 
-    public void attackTarget(Map map, Coordinates nextPosition, Herbivore herbivore, List<Coordinates> path, int target) {
+    public void attackTarget(WorldMap worldMap, Coordinates nextPosition, Herbivore herbivore, List<Coordinates> path, int target) {
         if (herbivore.getHealth() > STRENGTH) {
-            map.setEntity(nextPosition, this);
+            worldMap.setEntity(nextPosition, this);
             herbivore.setHealth(herbivore.getHealth() - STRENGTH);
         } else {
             herbivore.setHealth(herbivore.getHealth() - STRENGTH);
-            map.setEntity(path.get(target), this);
+            worldMap.setEntity(path.get(target), this);
         }
     }
 }

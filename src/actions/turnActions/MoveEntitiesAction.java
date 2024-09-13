@@ -5,16 +5,16 @@ import entities.Entity;
 import entities.creatures.Creature;
 import search.BreadthFirstSearch;
 import map.Coordinates;
-import map.Map;
+import map.WorldMap;
 
 import java.util.*;
 
 public class MoveEntitiesAction extends Action {
-    private final Map map;
+    private final WorldMap worldMap;
     private final BreadthFirstSearch breadthFirstSearch;
 
-    public MoveEntitiesAction(Map map, BreadthFirstSearch breadthFirstSearch) {
-        this.map = map;
+    public MoveEntitiesAction(WorldMap worldMap, BreadthFirstSearch breadthFirstSearch) {
+        this.worldMap = worldMap;
         this.breadthFirstSearch = breadthFirstSearch;
     }
 
@@ -29,13 +29,13 @@ public class MoveEntitiesAction extends Action {
 
     public void moveEntity(Queue<Coordinates> movableEntities, List<Entity> entities) {
         Coordinates coordinates = movableEntities.poll();
-        Entity entity = map.getEntity(coordinates);
+        Entity entity = worldMap.getEntity(coordinates);
 
         if (!entities.contains(entity)) {
             if (entity instanceof Creature creature) {
-                List<Coordinates> path = breadthFirstSearch.BFS(map, coordinates, creature);
+                List<Coordinates> path = breadthFirstSearch.BFS(worldMap, coordinates, creature);
                 if (!path.isEmpty()) {
-                    creature.makeMove(map, path, coordinates);
+                    creature.makeMove(worldMap, path, coordinates);
                     entities.add(creature);
                 }
             }
@@ -45,8 +45,8 @@ public class MoveEntitiesAction extends Action {
     private Queue<Coordinates> chooseMovableEntities() {
         Queue<Coordinates> movableEntities = new LinkedList<>();
 
-        for (Coordinates coordinates : map.entities.keySet()) {
-            Entity entity = map.getEntity(coordinates);
+        for (Coordinates coordinates : worldMap.entities.keySet()) {
+            Entity entity = worldMap.getEntity(coordinates);
             if (entity instanceof Creature) {
                 movableEntities.offer(coordinates);
             }
@@ -54,11 +54,11 @@ public class MoveEntitiesAction extends Action {
         return movableEntities;
     }
 
-    public boolean hasPath(Map map) {
-        for (Coordinates coordinates : map.entities.keySet()) {
-            Entity entity = map.getEntity(coordinates);
+    public boolean hasPath(WorldMap worldMap) {
+        for (Coordinates coordinates : worldMap.entities.keySet()) {
+            Entity entity = worldMap.getEntity(coordinates);
             if (entity instanceof Creature creature) {
-                List<Coordinates> path = breadthFirstSearch.BFS(map, coordinates, creature);
+                List<Coordinates> path = breadthFirstSearch.BFS(worldMap, coordinates, creature);
                 if (!path.isEmpty()) {
                     return true;
                 }

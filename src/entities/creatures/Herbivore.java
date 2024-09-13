@@ -3,7 +3,7 @@ package entities.creatures;
 import entities.Entity;
 import entities.environment.Grass;
 import map.Coordinates;
-import map.Map;
+import map.WorldMap;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class Herbivore extends Creature {
     }
 
     @Override
-    public void makeMove(Map map, List<Coordinates> path, Coordinates initialPosition) {
+    public void makeMove(WorldMap worldMap, List<Coordinates> path, Coordinates initialPosition) {
         Coordinates nextPosition;
 
         if (path.size() <= speed) {
@@ -29,13 +29,13 @@ public class Herbivore extends Creature {
             nextPosition = path.get(speed);
         }
 
-        map.removeEntity(initialPosition, this);
+        worldMap.removeEntity(initialPosition, this);
 
-        if (map.getEntity(nextPosition) instanceof Grass) {
+        if (worldMap.getEntity(nextPosition) instanceof Grass) {
             eatFood();
         }
 
-        map.setEntity(nextPosition, this);
+        worldMap.setEntity(nextPosition, this);
     }
 
     public void eatFood() {

@@ -3,20 +3,20 @@ package core;
 import actions.initActions.SpawnAction;
 import actions.turnActions.MoveEntitiesAction;
 import actions.turnActions.ReplantGrassAction;
-import map.Map;
+import map.WorldMap;
 import map.MapRenderer;
 import search.BreadthFirstSearch;
 
 import java.util.*;
 
 public class Simulation extends Thread {
-    private final Map map = new Map();
+    private final WorldMap worldMap = new WorldMap();
     private final MapRenderer mapRenderer = new MapRenderer();
     private final BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch();
     private final MessagePrinter messagePrinter = new MessagePrinter();
     private final InputValidator inputValidator = new InputValidator();
-    private final SpawnAction spawnAction = new SpawnAction(map);
-    private final MoveEntitiesAction moveEntitiesAction = new MoveEntitiesAction(map, breadthFirstSearch);
+    private final SpawnAction spawnAction = new SpawnAction(worldMap);
+    private final MoveEntitiesAction moveEntitiesAction = new MoveEntitiesAction(worldMap, breadthFirstSearch);
     private final ReplantGrassAction replantGrassAction = new ReplantGrassAction();
     private int turnsOfSimulation = 1;
     private boolean running = true;
@@ -29,10 +29,10 @@ public class Simulation extends Thread {
         moveEntitiesAction.perform();
 
         if (turnsOfSimulation % REPLANT_FREQUENCY == 0) {
-            replantGrassAction.perform(map);
+            replantGrassAction.perform(worldMap);
         }
 
-        mapRenderer.render(map);
+        mapRenderer.render(worldMap);
         turnsOfSimulation++;
     }
 
@@ -56,7 +56,7 @@ public class Simulation extends Thread {
     }
 
     public void run() {
-        while (running && moveEntitiesAction.hasPath(map)) {
+        while (running && moveEntitiesAction.hasPath(worldMap)) {
             if (!stopped) {
                 nextTurn();
                 try {

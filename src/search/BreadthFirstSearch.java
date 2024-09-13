@@ -2,12 +2,12 @@ package search;
 
 import entities.creatures.Creature;
 import map.Coordinates;
-import map.Map;
+import map.WorldMap;
 
 import java.util.*;
 
 public class BreadthFirstSearch {
-    public List<Coordinates> BFS(Map map, Coordinates coordinates, Creature creature) {
+    public List<Coordinates> BFS(WorldMap worldMap, Coordinates coordinates, Creature creature) {
 
         Queue<Coordinates> queue = new LinkedList<>();
         List<Coordinates> checkedCells = new ArrayList<>();
@@ -24,7 +24,7 @@ public class BreadthFirstSearch {
 
             checkedCells.add(coordinates);
 
-            if (creature.canEat(map.getEntity(coordinates))) {
+            if (creature.canEat(worldMap.getEntity(coordinates))) {
                 return recreatePath(coordinates, checkedCells, path, newPath);
             }
 
@@ -42,7 +42,7 @@ public class BreadthFirstSearch {
                 boolean isValidMove = (
                         areCoordinatesInMapBounds(nextX, nextY) &&
                         isCellExplorable(checkedCells, queue, nextCoordinates) &&
-                        canMove(map, nextCoordinates, creature)
+                        canMove(worldMap, nextCoordinates, creature)
                 );
 
                 if (isValidMove) {
@@ -55,15 +55,15 @@ public class BreadthFirstSearch {
     }
 
     private boolean areCoordinatesInMapBounds(int x, int y) {
-        return x < Map.MAP_WIDTH && x >= 0 && y < Map.MAP_HEIGHT && y >= 0;
+        return x < WorldMap.MAP_WIDTH && x >= 0 && y < WorldMap.MAP_HEIGHT && y >= 0;
     }
 
     private boolean isCellExplorable(List<Coordinates> checkedCells, Queue<Coordinates> queue, Coordinates nextCoordinates) {
         return !checkedCells.contains(nextCoordinates) && !queue.contains(nextCoordinates);
     }
 
-    private boolean canMove(Map map, Coordinates nextCoordinates, Creature creature) {
-        return creature.canEat(map.getEntity(nextCoordinates)) || map.isCellEmpty(nextCoordinates);
+    private boolean canMove(WorldMap worldMap, Coordinates nextCoordinates, Creature creature) {
+        return creature.canEat(worldMap.getEntity(nextCoordinates)) || worldMap.isCellEmpty(nextCoordinates);
     }
 
     private List<Coordinates> recreatePath(Coordinates coordinates, List<Coordinates> checkedCells, HashMap<Coordinates, Coordinates> path, List<Coordinates> newPath) {

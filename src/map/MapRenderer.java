@@ -17,15 +17,15 @@ public class MapRenderer {
     private static final String EMPTY = "";
 
     StringBuilder stringBuilder = new StringBuilder();
-    public void render(Map map) {
-        for (int y = Map.MAP_HEIGHT - 1; y > -1; y--) {
+    public void render(WorldMap worldMap) {
+        for (int y = WorldMap.MAP_HEIGHT - 1; y > -1; y--) {
             stringBuilder.setLength(0);
-            for (int x = 0; x < Map.MAP_WIDTH; x++) {
+            for (int x = 0; x < WorldMap.MAP_WIDTH; x++) {
                 Coordinates coordinates = new Coordinates(x, y);
-                if (map.isCellEmpty(coordinates)) {
+                if (worldMap.isCellEmpty(coordinates)) {
                     stringBuilder.append(GROUND);
                 } else {
-                    stringBuilder.append(selectEmojiSpriteForEntity(map.getEntity(coordinates)));
+                    stringBuilder.append(selectEmojiSpriteForEntity(worldMap.getEntity(coordinates)));
                 }
             }
             System.out.println(stringBuilder);

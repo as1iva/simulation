@@ -1,25 +1,25 @@
 package actions.initActions;
 
 import actions.Action;
-import map.Map;
+import map.WorldMap;
 
 public class SpawnAction extends Action {
-    private final Map map;
+    private final WorldMap worldMap;
     private final GrassSpawnAction spawnGrassAction = new GrassSpawnAction();
     private final HerbivoreSpawnAction spawnHerbivoreAction = new HerbivoreSpawnAction();
     private final PredatorSpawnAction spawnPredatorAction = new PredatorSpawnAction();
     private final RockSpawnAction spawnRockAction = new RockSpawnAction();
     private final TreeSpawnAction spawnTreeAction = new TreeSpawnAction();
 
-    public SpawnAction(Map map) {
-       this.map = map;
+    public SpawnAction(WorldMap worldMap) {
+       this.worldMap = worldMap;
     }
 
     public void perform() {
-        spawnGrassAction.perform(map);
-        spawnHerbivoreAction.perform(map);
-        spawnPredatorAction.perform(map);
-        spawnRockAction.perform(map);
-        spawnTreeAction.perform(map);
+        spawnGrassAction.perform(worldMap);
+        spawnHerbivoreAction.perform(worldMap);
+        spawnPredatorAction.perform(worldMap);
+        spawnRockAction.perform(worldMap);
+        spawnTreeAction.perform(worldMap);
     }
 }
