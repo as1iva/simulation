@@ -2,6 +2,7 @@ package core;
 
 import actions.InitActions;
 import actions.TurnActions;
+import actions.turnActions.ReplantGrassAction;
 import map.Map;
 import map.MapRenderer;
 import search.BreadthFirstSearch;
@@ -20,11 +21,15 @@ public class Simulation extends Thread {
     private final Scanner scanner = new Scanner(System.in);
 
     public void nextTurn() {
+        int REPLANT_FREQUENCY = 5;
         System.out.println("\nХод: " + turnsOfSimulation);
 
         turnActions.perform();
-        mapRenderer.render(map);
+        if (turnsOfSimulation % REPLANT_FREQUENCY == 0) {
+            replantGrassAction.perform(map);
+        }
 
+        mapRenderer.render(map);
         turnsOfSimulation++;
     }
 
