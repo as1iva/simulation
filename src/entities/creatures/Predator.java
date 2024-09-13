@@ -21,13 +21,17 @@ public class Predator extends Creature {
 
     @Override
     public void makeMove(Map map, List<Coordinates> path, Coordinates initialPosition) {
+        final int LAST_STEP_BEFORE_TARGET = speed - 1;
+        final int WITHIN_REACH_OF_TARGET = speed + 1;
+        final int NEXT_TO_TARGET = 2;
+
         Coordinates nextPosition;
         int target = path.size() - 1;
 
-        if (path.size() == speed) {
+        if (path.size() == NEXT_TO_TARGET) {
             nextPosition = initialPosition;
-        } else if (path.size() == 3) {
-            nextPosition = path.get(1);
+        } else if (path.size() == WITHIN_REACH_OF_TARGET) {
+            nextPosition = path.get(LAST_STEP_BEFORE_TARGET);
         } else {
             nextPosition = path.get(speed);
 
