@@ -25,4 +25,8 @@ public class WorldMap {
     public boolean isCellEmpty(Coordinates coordinates) {
         return !entities.containsKey(coordinates);
     }
+
+    public int getMapSize() {
+        return MAP_WIDTH * MAP_HEIGHT;
+    }
 }
