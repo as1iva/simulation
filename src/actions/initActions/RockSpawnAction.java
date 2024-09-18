@@ -10,8 +10,10 @@ public class RockSpawnAction extends Action {
 
     protected void perform(WorldMap worldMap) {
         for (int i = 0; i < ROCK_COUNT; i++) {
-            Coordinates coordinates = getEmptyRandomCoordinates(worldMap);
-            worldMap.setEntity(coordinates, new Rock());
+            if (canGetEmptyCoordinates(worldMap)) {
+                Coordinates coordinates = getEmptyRandomCoordinates(worldMap);
+                worldMap.setEntity(coordinates, new Rock());
+            }
         }
     }
 }

@@ -10,8 +10,10 @@ public class TreeSpawnAction extends Action {
 
     protected void perform(WorldMap worldMap) {
         for (int i = 0; i < TREE_COUNT; i++) {
-            Coordinates coordinates = getEmptyRandomCoordinates(worldMap);
-            worldMap.setEntity(coordinates, new Tree());
+            if (canGetEmptyCoordinates(worldMap)) {
+                Coordinates coordinates = getEmptyRandomCoordinates(worldMap);
+                worldMap.setEntity(coordinates, new Tree());
+            }
         }
     }
 }

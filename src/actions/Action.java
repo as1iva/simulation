@@ -1,5 +1,6 @@
 package actions;
 
+import entities.Entity;
 import map.Coordinates;
 import map.WorldMap;
 
@@ -17,5 +18,9 @@ public class Action {
                 return new Coordinates(x, y);
             }
         }
+    }
+
+    protected boolean canGetEmptyCoordinates(WorldMap worldMap) {
+        return worldMap.getMapSize() != worldMap.entities.size();
     }
 }

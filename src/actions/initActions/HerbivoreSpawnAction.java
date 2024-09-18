@@ -10,8 +10,10 @@ public class HerbivoreSpawnAction extends Action {
 
     protected void perform(WorldMap worldMap) {
         for (int i = 0; i < HERBIVORE_COUNT; i++) {
-            Coordinates coordinates = getEmptyRandomCoordinates(worldMap);
-            worldMap.setEntity(coordinates, new Herbivore());
+            if (canGetEmptyCoordinates(worldMap)) {
+                Coordinates coordinates = getEmptyRandomCoordinates(worldMap);
+                worldMap.setEntity(coordinates, new Herbivore());
+            }
         }
     }
 }

@@ -10,8 +10,10 @@ public class GrassSpawnAction extends Action {
 
     protected void perform(WorldMap worldMap) {
         for (int i = 0; i < GRASS_COUNT; i++) {
-            Coordinates coordinates = getEmptyRandomCoordinates(worldMap);
-            worldMap.setEntity(coordinates, new Grass());
+            if (canGetEmptyCoordinates(worldMap)) {
+                Coordinates coordinates = getEmptyRandomCoordinates(worldMap);
+                worldMap.setEntity(coordinates, new Grass());
+            }
         }
     }
 }
